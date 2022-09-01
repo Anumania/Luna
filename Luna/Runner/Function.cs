@@ -564,6 +564,14 @@ namespace Luna.Runner {
         #endregion
 
         #region Runner
+
+        [FunctionDefinition("@@This@@")]
+
+        public static LValue atatthisatat(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack)
+        {
+            //MessageBox.Show(_arguments[0].ToString(), _assets.DisplayName, MessageBoxButtons.OK);
+            return LValue.Real(_environment.Instance.ID);
+        }
         [FunctionDefinition("method")]
         public static LValue method(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack) {
             throw new Exception("Count: " + _count.ToString());
@@ -571,6 +579,14 @@ namespace Luna.Runner {
             return LValue.Real(0);
         }
 
+        [FunctionDefinition("debug_get_callstack")]
+        public static LValue debug_get_callstack(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack)
+        {
+            //throw new Exception("Count: " + _count.ToString());
+            //MessageBox.Show(_arguments[0].ToString(), _assets.DisplayName, MessageBoxButtons.OK);
+            LValue[] stackCopy = _stack.ToArray();
+            return LValue.Values(stackCopy);
+        }
         [FunctionDefinition("show_message")]
         public static LValue show_message(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack) {
             MessageBox.Show(_arguments[0].ToString(), _assets.DisplayName, MessageBoxButtons.OK);
