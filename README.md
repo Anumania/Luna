@@ -5,6 +5,17 @@
   <b>A custom implementation of the GameMaker 2.3 runtime in C#</b>
 </p>
 
+# Progress?
+luna used to work for a much older version of gamemaker, my goal is to hopefully update it to work with newer versions.
+
+## issues solved: 
+-texture page format changes
+-object format changes
+
+##issues known about but not solved:
+-the fucken qoi format (thanks undertale mod tool)
+-the fact that the language has structs now and this vm doesnt
+
 # Features
 - Parses the GameMaker IFF file for some assets
 - Allows for object instantiation
@@ -20,7 +31,7 @@ Nothing like this really exists. I don't want to make this to be some sort of su
 
 # Notes
 - GameMaker is copyright of [YoYo Games Ltd.](https://www.yoyogames.com/)
-- Target Runtime: 23.1.1.146
+- Target Runtime: 2023.6.0.139
 
 # Special Thanks
 - Thanks to [@Shana6](https://github.com/Shana6) for the numerous contributions 

@@ -9,6 +9,7 @@ namespace Luna.Assets {
         public string Name;
         public LSprite Sprite;
         public bool Visible;
+        public bool Managed;
         public bool Solid;
         public Int32 Depth;
         public bool Persistent;
@@ -43,6 +44,7 @@ namespace Luna.Assets {
                 this.Sprite = _assets.SpriteMapping[_spriteIndex];
             } else this.Sprite = null;
             this.Visible = _reader.ReadLBoolean();// (_reader.ReadInt32() == 1 ? true : false);
+            this.Managed = _reader.ReadLBoolean(); //like rollback
             this.Solid = _reader.ReadLBoolean();
             this.Depth = _reader.ReadInt32();
             this.Persistent = _reader.ReadLBoolean();

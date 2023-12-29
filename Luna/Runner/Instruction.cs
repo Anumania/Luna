@@ -426,7 +426,8 @@ namespace Luna.Instructions {
         public LValue[] Arguments;
         public Int32 Count;
         public Call(Int32 _instruction, Game _game, LCode _code, BinaryReader _reader) : base(_instruction) {
-            this.FunctionName = _game.Functions[_game.FunctionMapping[(int)((_code.Base + _reader.BaseStream.Position))]].Name;
+            int functionMap = _game.FunctionMapping[(int)((_code.Base + _reader.BaseStream.Position))];
+            this.FunctionName = _game.Functions[functionMap].Name;
             if (Runner.Function.Mapping.ContainsKey(this.FunctionName) == true) {
                 this.Function = Runner.Function.Mapping[this.FunctionName];
                 this.Type = CallType.Function;
