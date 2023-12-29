@@ -46,7 +46,7 @@ namespace Luna {
             }
         }
 
-        public static void DrawDefaultObject(Game _assets, LInstance _inst) {
+        public static void DrawDefaultObject(Game _assets, GMLObject _inst) {
             LValue _index = _inst.Variables["sprite_index"];
             LValue _image = _inst.Variables["image_index"];
             if (_index.I32 >= 0 && _index < _assets.SpriteMapping.Count) {

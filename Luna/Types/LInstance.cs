@@ -5,14 +5,12 @@ using Luna.Assets;
 using Luna.Runner;
 
 namespace Luna.Types {
-    class LInstance {
+    class LInstance : GMLObject {
         public double ID;
         public static double IDStart = 100000;
         public static double IDCount = LInstance.IDStart;
 
         public LObject Object = null;
-        public Domain Environment;
-        public Dictionary<string, LValue> Variables;
 
         public LCode RoomPreCreate = null;
         public LCode RoomCreate = null;
@@ -25,10 +23,9 @@ namespace Luna.Types {
         public LCode Destroy = null;
         public LCode CleanUp = null;
 
-        public LInstance(Game _assets, LObject _object, bool _include=false, double _x=0, double _y=0) {
+        public LInstance(Game _assets, LObject _object, bool _include=false, double _x=0, double _y=0) : base() {
             this.Object = _object;
             this.ID = LInstance.IDCount++;
-            this.Environment = new Domain(this);
             this.Variables = new Dictionary<string, LValue>() {
                 ["x"] = new LValue(LType.Number, _x),
                 ["y"] = new LValue(LType.Number, _y),

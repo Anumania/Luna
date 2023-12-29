@@ -101,28 +101,6 @@ namespace Luna {
                 _textureList.Add(new LTexture(_reader));
             });
 
-            // Get sizes
-            //texture page entries are 7 int32's long = i*7 = 14
-            //the TXTR header is 3 + i int32's long = 3+2 = 5 (3 replaced with 1 here because chunk base is set after the header header)
-            //total is 19 * 4 = 76
-            //padding size = (pos +76 ) % 0x80 
-
-            /*int headerSize = 1 + _textureList.Count;
-            int entriesSize = _textureList.Count * 7;
-            int totalSize = (headerSize + entriesSize)*4;
-            int startingOffset = (int)_chunk.Base + totalSize;
-            startingOffset -= startingOffset % 0x80; //there is padding, this padding check has to be done for every texture lol 
-            startingOffset += 0x80;
-
-            for(int i = 0; i < _textureList.Count; i++) {
-                _textureList[i].Offset = startingOffset;
-                startingOffset += _textureList[i].Length;
-
-                startingOffset -= startingOffset % 0x80; //padding
-                startingOffset += 0x80;
-
-                _textureList[i].LoadImage(_reader);
-            }*/
             for(int i = 0; i < _textureList.Count;i++)
             {
                 _textureList[i].LoadImage(_reader);

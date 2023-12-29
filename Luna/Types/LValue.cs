@@ -1,13 +1,15 @@
-﻿using System;
+﻿using Luna.Types;
+using System;
 
 namespace Luna {
-    public enum LType {
+    public enum LType { //taken from YYRValue.h
         Number,
         String,
         Array,
         Pointer,
         Vec3,
         Undefined,
+        Object,
         Int32 = 7,
         Vec4,
         Matrix,
@@ -15,7 +17,8 @@ namespace Luna {
         Accessor,
         Null,
         Bool,
-        Iterator
+        Iterator,
+        Ref
     }
 
     struct LValue {
@@ -26,7 +29,8 @@ namespace Luna {
         public string String;
         public LValue[] Array;
         public bool Undefined;
-
+        public UInt32 flags;
+        public GMLObject Object;
         public LValue(LType _type, object _val) {
             this.Number = 0;
             this.String = "";
@@ -34,7 +38,9 @@ namespace Luna {
             this.I64 = 0;
             this.Array = null;
             this.Undefined = false;
-            
+            this.Object = null;
+
+            this.flags = 0; //a bit flag that YYRValue uses sometimes? apparently only used for javascript
             this.Type = _type;
             switch (this.Type) {
                 case LType.Number: this.Number = (double)_val; break;
@@ -43,6 +49,7 @@ namespace Luna {
                 case LType.Int64: this.I64 = (Int64)_val; break;
                 case LType.Array: this.Array = (LValue[])_val; break;
                 case LType.Undefined: this.Undefined = true; break;
+                //case LType.Object: this.Object = _val; break;
             }
         }
 

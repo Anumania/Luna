@@ -7,6 +7,7 @@ using Luna.Types;
 using Luna.Assets;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
+using Luna.Instructions;
 
 namespace Luna.Runner {
     [AttributeUsage(AttributeTargets.Method)]
@@ -70,8 +71,11 @@ namespace Luna.Runner {
                     }
                 }
             } else {
-                if (_environment.Instance.ID >= LInstance.IDStart) {
-                    _environment.Instance.Remove(_assets, _instDestroy);
+                if (_environment is LStruct)
+                    throw new Exception("instance destroy on a struct");
+                var inst = _environment.Instance as LInstance;
+                if (inst.ID >= LInstance.IDStart) {
+                    inst.Remove(_assets, _instDestroy);
                 }
             }
             return LValue.Real(0);
@@ -570,7 +574,8 @@ namespace Luna.Runner {
         public static LValue atatthisatat(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack)
         {
             //MessageBox.Show(_arguments[0].ToString(), _assets.DisplayName, MessageBoxButtons.OK);
-            return LValue.Real(_environment.Instance.ID);
+            //return LValue.Real(_environment.Instance.ID);
+            return LValue.Undef();
         }
 
         [FunctionDefinition("@@NullObject@@")]
@@ -580,11 +585,26 @@ namespace Luna.Runner {
             return LValue.Undef();
         }
 
+        [FunctionDefinition("@@NewGMLObject@@")]
+
+        public static LValue newGMLObject(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack)
+        {
+            return LValue.Undef();
+        }
+
         [FunctionDefinition("method")]
         public static LValue method(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack) {
             //throw new Exception("Count: " + _count.ToString());
             //MessageBox.Show(_arguments[0].ToString(), _assets.DisplayName, MessageBoxButtons.OK);
             return LValue.Real(0);
+        }
+
+        [FunctionDefinition("ds_list_create")]
+        public static LValue ds_list_create(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack)
+        {
+            //throw new Exception("Count: " + _count.ToString());
+            //MessageBox.Show(_arguments[0].ToString(), _assets.DisplayName, MessageBoxButtons.OK);
+            throw new Exception("ds lists will never be implemented. explode.");
         }
 
         [FunctionDefinition("debug_get_callstack")]
