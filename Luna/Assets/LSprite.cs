@@ -63,6 +63,7 @@ namespace Luna.Assets {
             this.PlaybackType = (PlaybackType)_reader.ReadInt32();
             this.PlaybackSpeed = _reader.ReadSingle();
             _reader.ReadInt32(); // TODO: Read sequence data @ position
+            _reader.ReadInt32(); //9slice
             switch (this.SpriteType) {
                 case SpriteType.Bitmap: {
                     this.TextureEntries = new List<LTexturePageEntry>();
