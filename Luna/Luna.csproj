@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputType>WinExe</OutputType>
@@ -87,6 +88,7 @@
     <Compile Include="Data\ChunkHandler.cs" />
     <Compile Include="Assets\LRoom.cs" />
     <Compile Include="Data\Chunk.cs" />
+    <Compile Include="Data\QoiConverter.cs" />
     <Compile Include="Runner\Decompiler.cs" />
     <Compile Include="Runner\Domain.cs" />
     <Compile Include="Runner\Function.cs" />

@@ -53,8 +53,8 @@ namespace UndertaleModLib.Util
         /// <exception cref="Exception">If there is an invalid QOIF magic header or there was an error with stride width.</exception>
         public static Bitmap GetImageFromStream(Stream s)
         {
-            Span<byte> header = stackalloc byte[12];
-            s.Read(header);
+            byte[] header = new byte[12];
+            s.Read(header,0,12); //wtf does this even do
             int length = header[8] + (header[9] << 8) + (header[10] << 16) + (header[11] << 24);
             byte[] bytes = new byte[12 + length];
             s.Position -= 12;
@@ -199,7 +199,7 @@ namespace UndertaleModLib.Util
         public static unsafe Span<byte> GetSpanFromImage(Bitmap bmp, int padding = 4)
         {
             if (!isBufferEmpty)
-                Array.Clear(sharedBuffer);
+                Array.Clear(sharedBuffer,0,sharedBuffer.Length);
 
             // Little-endian QOIF image magic
             sharedBuffer[0] = (byte)'f';
@@ -322,7 +322,8 @@ namespace UndertaleModLib.Util
 
             isBufferEmpty = false;
 
-            return sharedBuffer.AsSpan()[..resPos];
+            var sp = sharedBuffer.AsSpan();
+            return sp.Slice(0, resPos);
         }
     }
 }
