@@ -255,7 +255,7 @@ namespace Luna.Instructions {
     }
 
     [InstructionDefinition(LOpcode.push)]
-    class Push : Instruction {
+    class Push  : Instruction {
         public bool IsArray;
         public LValue Value;
         public LVariable Variable;

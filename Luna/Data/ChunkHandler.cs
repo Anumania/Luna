@@ -196,7 +196,7 @@ namespace Luna {
             HandleKVP(_assets, _reader, delegate (Int32 _offset) {
                 LScript _scriptGet = new LScript(_assets, _reader);
                 _assets.Scripts.Add(_scriptGet.Name, _scriptGet);
-                _assets.ScriptMapping.Insert((Int32)_scriptGet.Index, _scriptGet);
+                //_assets.ScriptMapping.Insert((Int32)_scriptGet.Index, _scriptGet);
             });
         }
 
