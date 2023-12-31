@@ -100,6 +100,7 @@
     <Compile Include="Runner\Interpreter.cs" />
     <Compile Include="Runner\View.cs" />
     <Compile Include="Types\GMLObject.cs" />
+    <Compile Include="Types\LMethod.cs" />
     <Compile Include="Types\LStruct.cs" />
     <Compile Include="Types\LColour.cs" />
     <Compile Include="Types\LEvent.cs" />

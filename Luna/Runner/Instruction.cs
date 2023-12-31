@@ -698,6 +698,16 @@ namespace Luna.Instructions {
             
         }
     }
+    [InstructionDefinition(LOpcode.ret)]
+    class Return : Instruction
+    {
+        public Return(Int32 _instruction, Game _game, LCode _code, BinaryReader _reader) : base(_instruction) { }
+
+        public override void Perform(Game _assets, Domain _environment, LCode _code, Stack<LValue> _stack)
+        {
+
+        }
+    }
 
     #endregion
 }

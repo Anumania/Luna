@@ -596,6 +596,14 @@ namespace Luna.Runner {
         public static LValue method(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack) {
             //throw new Exception("Count: " + _count.ToString());
             //MessageBox.Show(_arguments[0].ToString(), _assets.DisplayName, MessageBoxButtons.OK);
+            LValue func = _arguments[1];
+            if (func.Type == LType.Number)
+            {
+                if (_arguments[1])
+                {
+
+                }
+            }
             return LValue.Real(0);
         }
 
